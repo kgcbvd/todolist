@@ -11,7 +11,6 @@ class Assignment
       # use the User Model class to create a new user in the DB
       # return an instance of the class with primary key (`id`), and dates (`created_at` and `updated_at`) assigned
     @user = User.create(:username => params[:username], :password_digest => params[:password_digest])
-    @user
   end
 
   def create_todolist(params)
@@ -19,7 +18,6 @@ class Assignment
       # use the TodoList Model class to create a new user in the DB
       # return an instance of the class with primary key (`id`), and dates (`created_at` and `updated_at`) assigned
     @todo = TodoList.create(:list_name => params[:name], :list_due_date => params[:due_date])
-    @todo
   end
 
   #
@@ -65,12 +63,14 @@ class Assignment
       # accept an id input parameter
       # use the User Model class to get the User associated with the `id` primary key
       # return the User instance that matches the provided id
+    User.find(id)
   end
 
   def get_todolist_byid(id)
       # accept an id input parameter
       # use the TodoList Model class to get the TodoList associated with the `id` primary key
       # return the TodoList instance that matches the provided id
+    TodoList.find(id)
   end
 
   #
@@ -80,12 +80,14 @@ class Assignment
       # accept an id and password_digest input parameters
       # use the User Model class to update the `password_digest` for the User associated with the id primary key
       # (no return is required)
+    User.find_by(id).update(password_digest: password_digest)
   end
 
   def update_listname(id, name)
       # accept an id and name input parameters
       # use the TodoList Model class to update the `list_name` for the TodoList associated with id primary key 
       # (no return is required)
+    TodoList.find_by(id).update(list_name: name)
   end 
 
   #
@@ -95,11 +97,13 @@ class Assignment
       # accept an id input parameter
       # use the User Model class to remove the User associated with the `id` primary key from the database
       # (no return is required)
+    User.delete(id)
   end 
 
   def delete_todolist(id)
       # accept an id input parameter
       # use the TodoList Model class to remove the TodoList associated with the `id` primary key.
       # (no return is required)
+    TodoList.delete(id)
   end
 end

@@ -11,14 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151225142033) do
+ActiveRecord::Schema.define(version: 20151226172019) do
 
   create_table "profiles", force: :cascade do |t|
-    t.date     "birth_year"
+    t.integer  "birth_year"
     t.string   "first_name"
     t.string   "last_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "gender"
   end
 
   create_table "todo_items", force: :cascade do |t|
